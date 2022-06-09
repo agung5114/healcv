@@ -57,7 +57,18 @@ def getPrediction(data,model):
 
 def main():
     st.subheader("Heal - Food Analyzer")
-    data = st.camera_input('')
+    with st.expander('Open Camera'):
+        data1 = st.camera_input('')
+    with st.expander('Upload A Photo'):
+        data2 = st.file_uploader('')
+
+    if data1 != None:
+        data = data1
+    elif data2 != None:
+        data = data2
+    else:
+        data = None
+
     if data == None:
         st.write('Please Upload Photo of Food')
     else:
